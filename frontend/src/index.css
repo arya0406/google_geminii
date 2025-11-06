@@ -1,0 +1,44 @@
+/* Tailwind CSS base styles */
+@tailwind base;
+
+/* Tailwind CSS component classes */
+@tailwind components;
+
+/* Tailwind CSS utility classes */
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 320 30% 40%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 170 50% 60%;
+    --secondary-foreground: 170 50% 10%;
+    
+    --accent: 15 80% 60%;
+    --accent-foreground: 15 80% 10%;
+    
+    --background: 0 0% 100%;
+    --foreground: 320 20% 20%;
+    
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+    
+    --border: 320 10% 90%;
+  }
+}
+
+body {
+  background-color: rgb(249, 250, 251);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

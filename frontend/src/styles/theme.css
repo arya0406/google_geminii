@@ -1,0 +1,53 @@
+:root {
+  /* Base Colors */
+  --color-primary: hsl(320 30% 40%);
+  --color-primary-light: hsl(320 30% 95%);
+  --color-primary-foreground: hsl(0 0% 100%);
+
+  --color-secondary: hsl(170 50% 60%);
+  --color-secondary-light: hsl(170 50% 95%);
+  --color-secondary-foreground: hsl(0 0% 100%);
+
+  --color-accent: hsl(15 80% 60%);
+  --color-accent-light: hsl(15 80% 95%);
+  --color-accent-foreground: hsl(0 0% 100%);
+
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(320 20% 20%);
+  
+  --color-muted: hsl(0 0% 96%);
+  --color-muted-foreground: hsl(320 20% 40%);
+  
+  --color-border: hsl(320 10% 90%);
+
+  /* Typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Playfair Display", Georgia, Cambria, "Times New Roman", Times, serif;
+
+  /* Spacing */
+  --spacing-1: 0.25rem;  /* 4px */
+  --spacing-2: 0.5rem;   /* 8px */
+  --spacing-3: 0.75rem;  /* 12px */
+  --spacing-4: 1rem;     /* 16px */
+  --spacing-6: 1.5rem;   /* 24px */
+  --spacing-8: 2rem;     /* 32px */
+
+  /* Border Radius */
+  --radius-sm: 0.375rem;   /* 6px */
+  --radius-md: 0.5rem;     /* 8px */
+  --radius-lg: 0.75rem;    /* 12px */
+  --radius-xl: 1rem;       /* 16px */
+  --radius-2xl: 1.5rem;    /* 24px */
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Animation */
+  --transition-all: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+}
