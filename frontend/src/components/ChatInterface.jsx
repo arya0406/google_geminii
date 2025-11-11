@@ -42,12 +42,13 @@ function ChatInterface() {
     if (messages.length === 0) {
       const welcomeMessage = {
         sender: 'bot',
-        content: `👋 Welcome to DWed!
+        content: `👋 Welcome to DWed AI !
 
 I can help you with:
 1. Wedding Venues 🏰
 2. Indian Wedding Ceremonies 🎉
 3. Wedding Traditions ✨
+4. Event Planners 🎯
 
 What would you like to know about?`
       };
@@ -90,6 +91,9 @@ What would you like to know about?`
       if (data.type === 'venues') {
         setMessages(prev => [...prev, { sender: 'venues', content: data.data }]);
         setTimeout(scrollToBottom, 150);
+      } else if (data.type === 'event_planners') {
+        setMessages(prev => [...prev, { sender: 'event_planners', content: data.data }]);
+        setTimeout(scrollToBottom, 150);
       } else if (data.type === 'text') {
         setMessages(prev => [...prev, { sender: 'bot', content: data.data }]);
         setTimeout(scrollToBottom, 50);
@@ -115,7 +119,7 @@ What would you like to know about?`
   // Responsive dimensions
   const getChatDimensions = () => {
     if (isMobile) {
-      return 'w-[calc(100vw-2rem)] h-[calc(100vh-8rem)] bottom-4 right-4';
+      return 'w-[calc(100vw-2rem)] h-[calc(100vh-8rem)] bottom-12 right-4';
     }
     return 'w-full max-w-2xl h-[600px] bottom-6 right-6';
   };
@@ -133,15 +137,15 @@ What would you like to know about?`
       <Button
         onClick={() => setIsOpen(true)}
         className={cn(
-          'fixed z-50 flex items-center justify-center rounded-full bg-[#6f4465] text-white shadow-lg transition-all hover:scale-110 hover:bg-[#5a3752]',
+          'fixed z-50 flex flex-col items-center justify-center gap-0.5 rounded-full bg-[#6f4465] text-white shadow-lg transition-all hover:scale-110 hover:bg-[#5a3752] py-3 px-4',
           isMobile
-            ? 'bottom-4 right-4 h-12 w-12'
-            : 'bottom-6 right-6 h-14 w-14',
+            ? 'bottom-12 right-4 h-auto w-auto min-h-[56px]'
+            : 'bottom-16 right-6 h-auto w-auto min-h-[64px]',
           isOpen && 'hidden'
         )}
-        size="icon"
       >
         <MessageCircle className={cn(isMobile ? 'h-5 w-5' : 'h-6 w-6')} />
+        <span className="text-xs font-medium leading-tight">DWED-AI</span>
       </Button>
 
       {/* Chat Interface */}
@@ -231,14 +235,14 @@ What would you like to know about?`
         </div>
 
         {/* Input */}
-        <div className="border-t border-gray-200 bg-white p-3 sm:p-4 rounded-b-2xl sm:rounded-b-2xl">
-          <div className="flex gap-2">
+        <div className="border-t border-gray-200 bg-white p-4 sm:p-5 rounded-b-2xl sm:rounded-b-2xl">
+          <div className="flex gap-3">
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Ask about venues, ceremonies, or wedding traditions..."
-              className="flex-1 bg-white border-gray-300 focus-visible:ring-[#6f4465] focus:border-[#6f4465] text-sm sm:text-base"
+              className="flex-1 bg-white border-gray-300 focus-visible:ring-[#6f4465] focus:border-[#6f4465] text-base sm:text-lg h-14 sm:h-16"
               disabled={isLoading}
             />
             <Button
@@ -247,10 +251,10 @@ What would you like to know about?`
               size="icon"
               className={cn(
                 'shrink-0 bg-[#6f4465] text-white hover:bg-[#5a3752] border-0 transition-all duration-200 transform hover:scale-105 active:scale-95',
-                isMobile ? 'h-9 w-9' : 'h-10 w-10'
+                isMobile ? 'h-14 w-14' : 'h-14 sm:h-16 w-14 sm:w-16'
               )}
             >
-              <Send className={cn(isMobile ? 'h-3 w-3' : 'h-4 w-4')} />
+              <Send className={cn(isMobile ? 'h-5 w-5' : 'h-6 sm:h-7 w-6 sm:w-7')} />
             </Button>
           </div>
         </div>

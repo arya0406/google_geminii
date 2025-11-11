@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { messageItemVariants } from '../styles/motionVariants';
 import VenueCard from './VenueCard';
+import EventPlannerCard from './EventPlannerCard';
 
 function ChatMessage({ message }) {
   // User message - right aligned
@@ -121,6 +122,55 @@ function ChatMessage({ message }) {
       >
         {message.content.map((venue, index) => (
           <VenueCard key={venue._id || index} venue={venue} />
+        ))}
+      </motion.div>
+    );
+  }
+
+  // Event Planners message - display event planner cards
+  if (message.sender === 'event_planners') {
+    if (!message.content || message.content.length === 0) {
+      const suggestions = [
+        "Looking for event planners in nearby areas?",
+        "Would you like to explore planners with different experience levels?",
+        "How about checking planners specializing in specific event types?",
+        "I can help you find planners within different budget ranges"
+      ];
+
+      return (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="flex flex-col gap-4"
+        >
+          <motion.div
+            whileHover={{ scale: 1.01 }}
+            className="bg-gradient-to-r from-primary/5 via-background to-secondary/5 p-6 rounded-2xl max-w-lg border border-border shadow-md transition-all duration-200"
+          >
+            <h3 className="text-lg font-medium text-[#6f4465] mb-3">No event planners found matching your criteria</h3>
+            <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-4">
+              Let me help you find some alternatives! Would you like to:
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-sm md:text-base text-gray-700">
+              {suggestions.map((suggestion, index) => (
+                <li key={index}>{suggestion}</li>
+              ))}
+            </ul>
+          </motion.div>
+        </motion.div>
+      );
+    }
+
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        className="grid grid-cols-1 gap-4"
+      >
+        {message.content.map((eventPlanner, index) => (
+          <EventPlannerCard key={eventPlanner._id || index} eventPlanner={eventPlanner} />
         ))}
       </motion.div>
     );
